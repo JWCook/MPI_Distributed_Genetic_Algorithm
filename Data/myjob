@@ -1,0 +1,95 @@
+#!/bin/csh
+
+# Output goes to file BATCH_OUTPUT.
+# Error output goes to file BATCH_ERRORS.
+# If you want the output to go to another file, change BATCH_OUTPUT 
+# or BATCH_ERRORS in the following lines to the full path of that file. 
+
+#PBS  -o BATCH_OUTPUT 
+#PBS  -e BATCH_ERRORS 
+
+#PBS -lvmem=256Mb,pmem=256Mb,mem=256Mb,nodes=16:ppn=2,cput=2:00:00,walltime=1:00:00
+
+# Change to directory from which qsub was executed 
+   cd $PBS_O_WORKDIR
+   
+echo SIM1b-shpath-fixed
+
+mpirun -np 1 ga -i d5.shpath.np1
+mpirun -np 1 ga -i d5.shpath.np1
+mpirun -np 1 ga -i d5.shpath.np1
+mpirun -np 1 ga -i d5.shpath.np1
+mpirun -np 2 ga -i d5.shpath.np2
+mpirun -np 2 ga -i d5.shpath.np2
+mpirun -np 2 ga -i d5.shpath.np2
+mpirun -np 2 ga -i d5.shpath.np2
+mpirun -np 4 ga -i d5.shpath.np4
+mpirun -np 4 ga -i d5.shpath.np4
+mpirun -np 4 ga -i d5.shpath.np4
+mpirun -np 4 ga -i d5.shpath.np4
+mpirun -np 8 ga -i d5.shpath.np8
+mpirun -np 8 ga -i d5.shpath.np8
+mpirun -np 8 ga -i d5.shpath.np8
+mpirun -np 8 ga -i d5.shpath.np8
+mpirun -np 16 ga -i d5.shpath.np16
+mpirun -np 16 ga -i d5.shpath.np16
+mpirun -np 16 ga -i d5.shpath.np16
+mpirun -np 16 ga -i d5.shpath.np16
+mpirun -np 32 ga -i d5.shpath.np32
+mpirun -np 32 ga -i d5.shpath.np32
+mpirun -np 32 ga -i d5.shpath.np32
+mpirun -np 32 ga -i d5.shpath.np32
+
+echo SIMb-shpath-thresh
+
+mpirun -np 1 ga -i d6.shpath2.np1
+mpirun -np 1 ga -i d6.shpath2.np1
+mpirun -np 1 ga -i d6.shpath2.np1
+mpirun -np 1 ga -i d6.shpath2.np1
+mpirun -np 2 ga -i d6.shpath2.np2
+mpirun -np 2 ga -i d6.shpath2.np2
+mpirun -np 2 ga -i d6.shpath2.np2
+mpirun -np 2 ga -i d6.shpath2.np2
+mpirun -np 4 ga -i d6.shpath2.np4
+mpirun -np 4 ga -i d6.shpath2.np4
+mpirun -np 4 ga -i d6.shpath2.np4
+mpirun -np 4 ga -i d6.shpath2.np4
+mpirun -np 8 ga -i d6.shpath2.np8
+mpirun -np 8 ga -i d6.shpath2.np8
+mpirun -np 8 ga -i d6.shpath2.np8
+mpirun -np 8 ga -i d6.shpath2.np8
+mpirun -np 16 ga -i d6.shpath2.np16
+mpirun -np 16 ga -i d6.shpath2.np16
+mpirun -np 16 ga -i d6.shpath2.np16
+mpirun -np 16 ga -i d6.shpath2.np16
+mpirun -np 32 ga -i d6.shpath2.np32
+mpirun -np 32 ga -i d6.shpath2.np32
+mpirun -np 32 ga -i d6.shpath2.np32
+mpirun -np 32 ga -i d6.shpath2.np32
+
+echo SIMb-shpath-conv
+
+mpirun -np 1 ga -i d7.shpath3.np1
+mpirun -np 1 ga -i d7.shpath3.np1
+mpirun -np 1 ga -i d7.shpath3.np1
+mpirun -np 1 ga -i d7.shpath3.np1
+mpirun -np 2 ga -i d7.shpath3.np2
+mpirun -np 2 ga -i d7.shpath3.np2
+mpirun -np 2 ga -i d7.shpath3.np2
+mpirun -np 2 ga -i d7.shpath3.np2
+mpirun -np 4 ga -i d7.shpath3.np4
+mpirun -np 4 ga -i d7.shpath3.np4
+mpirun -np 4 ga -i d7.shpath3.np4
+mpirun -np 4 ga -i d7.shpath3.np4
+mpirun -np 8 ga -i d7.shpath3.np8
+mpirun -np 8 ga -i d7.shpath3.np8
+mpirun -np 8 ga -i d7.shpath3.np8
+mpirun -np 8 ga -i d7.shpath3.np8
+mpirun -np 16 ga -i d7.shpath3.np16
+mpirun -np 16 ga -i d7.shpath3.np16
+mpirun -np 16 ga -i d7.shpath3.np16
+mpirun -np 16 ga -i d7.shpath3.np16
+mpirun -np 32 ga -i d7.shpath3.np32
+mpirun -np 32 ga -i d7.shpath3.np32
+mpirun -np 32 ga -i d7.shpath3.np32
+mpirun -np 32 ga -i d7.shpath3.np32
