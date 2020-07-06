@@ -1,30 +1,21 @@
-=======================================
-0. Summary
-=======================================
+# Summary
 
-This program is a parallel island model genetic algorithm implementation, created for an undergrad senior project researching the parallelization and optimization of genetic algorithms for high-performance distributed computing systems. It was written in C and makes use of the OpenMPI library. That being said, this program is more functional than it is pretty.
+This program is a parallel island model genetic algorithm implementation, created for an undergrad senior project. The goal of the project was to benchmark the parallelization and optimization of genetic algorithms for high-performance distributed computing systems. It was written in C and makes use of the OpenMPI library.
 
 It includes two simple fitness functions (for performance testing purposes only; these can obviously be solved by more direct means):  
 Simple: Maximizes the function y^2 + x^2 - a^2 + b^2 - 2xy - 2ab  
 Shortest 3-dimensional path: Finds the shortest path in 3-dimensional space between two specified points around a set of obstacles.
 
-=======================================
-1. Requirements
-=======================================
-
+# Requirements
 This program requires OpenMPI: http://www.open-mpi.org
 
-=======================================
-2. Usage
-=======================================
+# Usage
 
-Compile and run ga from the command line. Simulation parameters can be entered either from user input or from previously saved parameter files (samples provided).
+Compile and run `ga` from the command line. Simulation parameters can be entered either from user input or from previously saved parameter files (samples provided).
 
 Configuration for reporting options and default GA parameters are located in config.h.
 
-=======================================
-3. User-specified values
-=======================================
+# User-specified values
 
 **Population size:** 
 A positive integer value for the size of the population. For parallel execution, this determines the size of each sub-population.
@@ -66,10 +57,7 @@ These define the end points between which a 3-dimensional path is contructed, en
 These are the obstacles around which a path must be constructed. Each object is aproximated by a sphere, with a center entered in the format (x,y,z) and a positive integer value for the radius.
 
 
-=======================================
-4. Code Overview
-=======================================
-
+# Code Overview
 Code is laid out as follows:
 
 **config.h:** 
@@ -87,21 +75,19 @@ Parallel implementation of the Mersenne Twister RNG algorithm
 **report.c:** 
 Helper functions for reporting population and fitness stats  
 
-=======================================
-5. References
-=======================================
+# References
 
 The following resources were used in the development of this program and its corresponding research paper:
 
-Adeli, Hojjat. Cost Optimization of Structures: Fuzzy Logic, Genetic Algorithms, and Parallel Computing. Chichester: Wiley, 2006.
-Cantu´-Paz, Erick. Efficient and Accurate Parallel Genetic Algorithms. Boston: Kluwer Academic, 2000.
-Cantu´-Paz, Erick. Genetic and Evolutionary Computation: Genetic and Evolutionary Computation Conference: Proceedings. Berlin: Springer, 2003.
-Cohoon, J.P., S.U. Hedge, W.N. Martin, D. Richards. Genetic Algorithms and Punctuated Equilibria in VLSI. Berlin: Springer-Verlag, 1991.
-Danková, Martina. Approximation of Extensional Fuzzy Relations Over Residuated Lattices. University of Ostrava Institute for Research and Applications of Fuzzy Modeling: Ostrava, 2008.
-De Jong, Kenneth Alan. An Analysis of the Behavior of a Class of Genetic Adaptive Systems. University of Michigan Press: Ann Arbor, 1975.
-Falkenauer, Emanuel. Genetic Algorithms and Grouping Problems. Chichester: Wiley, 1998.
-Gwiazda, Tomasz D. Genetic Algorithms Reference, Volume 1: Crossover for single-objective numerical optimization problems. Boston: Twayne Publishers, 2006. 
-Haupt, Randy L. and Sue Ellen. Practical Genetic Algorithms, Second Edition. Hoboken: Wiley, 2004.
-Schaeferm, Robert. Foundation of Global Genetic Optimization. Berlin: Springer, 2007.
-Stender, Joachim. Parallel Genetic Algorithms: Theory & Applications. Amsterdam: IOS, 1993.
-Vose, Michael D. The Simple Genetic Algorithm: Foundations and Theory. Cambridge: MIT Press, 1999.
+* Adeli, Hojjat. Cost Optimization of Structures: Fuzzy Logic, Genetic Algorithms, and Parallel Computing. Chichester: Wiley, 2006.
+* CantuÂ´-Paz, Erick. Efficient and Accurate Parallel Genetic Algorithms. Boston: Kluwer Academic, 2000.
+* CantuÂ´-Paz, Erick. Genetic and Evolutionary Computation: Genetic and Evolutionary Computation Conference: Proceedings. Berlin: Springer, 2003.
+* Cohoon, J.P., S.U. Hedge, W.N. Martin, D. Richards. Genetic Algorithms and Punctuated Equilibria in VLSI. Berlin: Springer-Verlag, 1991.
+* DankovÃ¡, Martina. Approximation of Extensional Fuzzy Relations Over Residuated Lattices. University of Ostrava Institute for Research and Applications of Fuzzy Modeling: Ostrava, 2008.
+* De Jong, Kenneth Alan. An Analysis of the Behavior of a Class of Genetic Adaptive Systems. University of Michigan Press: Ann Arbor, 1975.
+* Falkenauer, Emanuel. Genetic Algorithms and Grouping Problems. Chichester: Wiley, 1998.
+* Gwiazda, Tomasz D. Genetic Algorithms Reference, Volume 1: Crossover for single-objective numerical optimization problems. Boston: Twayne Publishers, 2006. 
+* Haupt, Randy L. and Sue Ellen. Practical Genetic Algorithms, Second Edition. Hoboken: Wiley, 2004.
+* Schaeferm, Robert. Foundation of Global Genetic Optimization. Berlin: Springer, 2007.
+* Stender, Joachim. Parallel Genetic Algorithms: Theory & Applications. Amsterdam: IOS, 1993.
+* Vose, Michael D. The Simple Genetic Algorithm: Foundations and Theory. Cambridge: MIT Press, 1999.
