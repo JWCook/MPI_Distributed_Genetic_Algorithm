@@ -17,7 +17,7 @@
 /* -------------------------------------------------------------------------- */
 void report_member(deme *subpop, char *chr) {
     int i;
-    
+
     if (subpop->ff_type == FF_SIMPLE) {
         printf("[x=%03i, y=%03i, a=%03i, b=%03i]",
             binToDecimal(chr, 0,  7),
@@ -42,8 +42,8 @@ void report_all(deme* subpop) {
     int i, my_rank;
     char chr[subpop->chr_size+1];
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
-    
-    if (PRNT_RATE > 0 && (subpop->cur_gen <= 1 
+
+    if (PRNT_RATE > 0 && (subpop->cur_gen <= 1
         || subpop->cur_gen % PRNT_RATE == PRNT_RATE - 1 || subpop->complete)) {
         if (PRNT_DATA && (PRNT_CHRS || PRNT_INFO || PRNT_FITS)) {
             for (i = 0; i < subpop->pop_size; i++) {
@@ -53,9 +53,9 @@ void report_all(deme* subpop) {
                     chr[subpop->chr_size] = '\0';
                     printf("%s ", chr);
                 }
-                if (PRNT_INFO) 
+                if (PRNT_INFO)
                     report_member(subpop, subpop->new_pop[i]->chr);
-                if (PRNT_FITS) 
+                if (PRNT_FITS)
                     printf("%.0f", subpop->new_pop[i]->fitness);
                 printf("\n");
             }
@@ -90,14 +90,14 @@ void report_fittest(deme *subpop) {
         MPI_Send(&subpop->new_pop[subpop->fit_max]->fitness, 1, MPI_DOUBLE, 0,
          50, MPI_COMM_WORLD);
     }
-            
+
     // Process 0 collects the most fit member of it and every other process
-    else {    
+    else {
         strncpy(fittest[0], subpop->new_pop[subpop->fit_max]->chr,
             subpop->chr_size);
         fittest[0][subpop->chr_size] = '\0';
         maxima[0] = subpop->new_pop[subpop->fit_max]->fitness;
-            
+
         for (source = 1; source < n_procs; source++) {
             MPI_Recv(local_fit, subpop->chr_size, MPI_CHAR, source,
                 50, MPI_COMM_WORLD, &status);
@@ -106,13 +106,13 @@ void report_fittest(deme *subpop) {
                 &status);
             strncpy(fittest[source], local_fit, subpop->chr_size);
             fittest[source][subpop->chr_size] = '\0';
-        }    
-        
+        }
+
         usleep(50);
-            
+
         for(source = 0; source < n_procs; source++)
             if (maxima[source] > maxima[global_max]) global_max = source;
-    
+
         printf("Best solution found:\n");
         if (PRNT_CHRS) printf("%s\n", fittest[global_max]);
         if (PRNT_INFO) report_member(subpop, fittest[global_max]);
@@ -159,13 +159,13 @@ void usage2() {
     printf("0: Fixed number of generations\n");
     printf("1: Maximum fitness threshhold\n");
     printf("2: Average fitness threshhold\n");
-    printf("3: Local convergence\n\n"); 
+    printf("3: Local convergence\n\n");
     printf("End generation:\nA positive integer value for the number of ");
     printf("generations, if a termination type of fixed generations was ");
     printf("selected\n\n");
     printf("Fitness threshhold:\nA positive value for an accepted fitness ");
     printf("level, if a termination type of average or maximum fitness ");
-    printf("threshhold was selected\n\n");    
+    printf("threshhold was selected\n\n");
     printf("Convergence generation threshhold:\nA positive integer value ");
     printf("for the number of generations with low variation that should ");
     printf("be considered a local convergence, if a termination type of ");
@@ -185,7 +185,7 @@ void usage2() {
     printf("path must be constructed. Each object is aproximated by a ");
     printf("sphere, with a center entered in the format (x,y,z) and a ");
     printf("positive integer value for the radius.\n");
-    
+
     exit(-1);
 }
 

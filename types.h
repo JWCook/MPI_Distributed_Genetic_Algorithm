@@ -91,7 +91,6 @@ typedef struct {
     int         conv_gen;
     double      conv_var;
     int         complete;
-    
     int         n_objs;
     object      **objs;
     point       *s;

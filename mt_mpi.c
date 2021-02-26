@@ -5,15 +5,15 @@
 /* of2^19937-1.                                                               */
 /* ========================================================================== */
 
-/* 
+/*
    A C-program for MT19937, with initialization improved 2002/1/26.
    Coded by Takuji Nishimura and Makoto Matsumoto.
 
-   Before using, initialize the state by using init_genrand(seed)  
+   Before using, initialize the state by using init_genrand(seed)
    or init_by_array(init_key, key_length).
 
    Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
-   All rights reserved.                          
+   All rights reserved.
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions
@@ -26,8 +26,8 @@
         notice, this list of conditions and the following disclaimer in the
         documentation and/or other materials provided with the distribution.
 
-     3. The names of its contributors may not be used to endorse or promote 
-        products derived from this software without specific prior written 
+     3. The names of its contributors may not be used to endorse or promote
+        products derived from this software without specific prior written
         permission.
 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
@@ -65,7 +65,7 @@ unsigned long time_seed() {
 
     for (i = 0; i < sizeof cur_time; i++)
         seed = seed * (UCHAR_MAX + 2U) + p[i];
-        
+
     return seed;
 }
 
@@ -77,7 +77,7 @@ unsigned long time_seed() {
 /* -------------------------------------------------------------------------- */
 void mt_init(int my_rank, unsigned long seed) {
     int i;
-    
+
     if (seed == 0) seed = time_seed();
     seed += my_rank;
     for (i = 0; i < NUM_RNG; i++) mti[i] = N+1;
@@ -97,7 +97,7 @@ unsigned long mt_rand_32(int my_rank) {
     unsigned long y;
 
     static int first = 1;
-    static unsigned long mag01[NUM_RNG][2]; 
+    static unsigned long mag01[NUM_RNG][2];
 
     // Init mag01
     if (first == 1) {
@@ -114,16 +114,16 @@ unsigned long mt_rand_32(int my_rank) {
 
         for (kk=0;kk<N-M;kk++) {
             y = (mt[my_rank][kk]&UPPER_MASK)|(mt[my_rank][kk+1]&LOWER_MASK);
-            mt[my_rank][kk] = mt[my_rank][kk+M] ^ 
+            mt[my_rank][kk] = mt[my_rank][kk+M] ^
                 (y >> 1) ^ mag01[my_rank][y & 0x1];
         }
-        
+
         for (;kk<N-1;kk++) {
             y = (mt[my_rank][kk]&UPPER_MASK)|(mt[my_rank][kk+1]&LOWER_MASK);
             mt[my_rank][kk] = mt[my_rank][kk+(M-N)] ^
                 (y >> 1) ^ mag01[my_rank][y & 0x1];
         }
-        
+
         y = (mt[my_rank][N-1]&UPPER_MASK)|(mt[my_rank][0]&LOWER_MASK);
         mt[my_rank][N-1] = mt[my_rank][M-1] ^
                 (y >> 1) ^ mag01[my_rank][y & 0x1];
@@ -144,7 +144,7 @@ unsigned long mt_rand_32(int my_rank) {
 /* Generate a random real number on the interval [0,n]                        */
 /* -------------------------------------------------------------------------- */
 long double mt_rand_real(double n, int my_rank) {
-    return mt_rand_32(my_rank)*(n/MT_MAX); 
+    return mt_rand_32(my_rank)*(n/MT_MAX);
 }
 
 
