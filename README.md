@@ -7,12 +7,26 @@ Simple: Maximizes the function y^2 + x^2 - a^2 + b^2 - 2xy - 2ab
 Shortest 3-dimensional path: Finds the shortest path in 3-dimensional space between two specified points around a set of obstacles.
 
 # Requirements
-This program requires OpenMPI: http://www.open-mpi.org
+This program requires [OpenMPI](http://www.open-mpi.org)
+
+Example install command on Ubuntu:
+```bash
+sudo apt-get install openmpi-bin
+```
+Or on Fedora-based distros:
+```bash
+sudo dnf install openmpi
+```
+
+# Installation
+
+To compile:
+```bash
+make all
+```
 
 # Usage
-
-Compile and run `ga` from the command line. Simulation parameters can be entered either from user input or from previously saved parameter files (samples provided).
-
+Simulation parameters can be entered either from user input or from previously saved parameter files (samples provided).
 Configuration for reporting options and default GA parameters are located in config.h.
 
 # User-specified values

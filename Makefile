@@ -1,11 +1,11 @@
 CC=mpicc
-CFLAGS= -O2 -Wall -lm
+CFLAGS='-O2 -Wall'
 
 
 all: ga
 
 ga: fitness.o ga.o init.o mt_mpi.o report.o
-	$(CC) $(CFLAGS) fitness.o ga.o init.o mt_mpi.o report.o -o ga
+	$(CC) $(CFLAGS) fitness.o ga.o init.o mt_mpi.o report.o -o ga -lm
 ga.o: ga.c config.h fitness.h ga.h init.h mt_mpi.h report.h types.h
 	$(CC) $(CFLAGS) -c ga.c
 
